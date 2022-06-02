@@ -1,0 +1,11 @@
+### Principais Comandos Git-Bash
+
+git clone _http:github_ ou _ssh:github_
+git status: diz qual é o status atual da branch
+
+git add: Adiciona arquivos que estão unchecked para serem observados no versionamento de código
+
+git commit -m "_mensagem_" : Comita os arquivos que estão no 'add' e os coloca em estado final.
+
+git push origin main: Atualiza os arquivos na nuvem com os arquivos commitados.
+
