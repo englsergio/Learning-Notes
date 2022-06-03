@@ -1,4 +1,6 @@
 ## Resumo criado por Leo Garcia.
+### Linkedin: https://www.linkedin.com/in/lgirotogarcia
+### GitHub: https://www.github.com/lgirotogarcia
 
 git remote add origin git@github.com:<userGitHub>/<nomeDoRepositório>.git ⇾ Cria um "apelido" pro repositório no GitHub. Nesse caso o apelido é Origin, comumente é usado esse nome para o repositório padrão;
 git init ⇾ inicia o git na pasta selecionada;
@@ -21,5 +23,6 @@ git push <apelidoRepositorioGitHub> <nomeBranch> ⇾ Envia o branch selecionado 
 git push <apelidoRepositorioGitHub> :<nomeBranch> ⇾ Deleta o branch do repositório GitHub
 git branch -D nomeBranch ⇾ Deleta o branch local;
 git pull <apelidoRepositorioGitHub> <nomeBranch> ⇾ Recebe o repositório GitHub no branch selecionado;
+git pull <apelidoRepositorioGitHub> <nomeBranch> --allow-unrelated-histories ⇾ Recebe o repositório GitHub no branch selecionado *mesmo que tenham históricos diferentes*;
 git clone <linkRepositorio> ⇾ Clona um repositório do link especificado na pasta selecionada no terminal;
 git remote -v ⇾ Mostra o apelido dos repositório remotos;
