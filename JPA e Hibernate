@@ -1,0 +1,14 @@
+JPA e Hibernate
+Java Persistence API (é uma padronização de ORM)
+ORM = Object Relational Mapping
+Usado para facilitar a interação entre as entidades de um banco de dados e de uma aplicação com paradigma orientado a objetos.
+
+Anotações:
+@Entity : Uma entidade do bd e uma classe do Java
+@Table(name="_nomeTabela_") : Se refere à uma tabela e passa um nome para a mesma.
+@Id : Anotação em nível de atributos da classe e que informa que esta será o id da table
+@GeneratedValue(strategy=GenerationType.AUTO) : Informa que o atributo será gerado automaticamente.
+*caso seja GenerationType.IDENTITY : será gerado um id automaticamente.
+@Column(name="_nomeColuna_", length=_num_, nullable = _trueOrFalse_) : Indica que este atributo é uma coluna da tabela no bd.
+Quando um atributo possui um nome identico ao de uma das colunas da tabela do bd, mesmo que não haja anotação table, o JPA o identifica como uma.
+O Spring Data JPA abstrai em mais uma camada essa interação aplicação VS banco de dados.

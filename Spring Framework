@@ -1,0 +1,93 @@
+#Spring Framework
+
+-Inversão de controle (redirecionamento de fluxo para um container, obj-> minimizar o acoplamento de código)
+-injeção de depêndencia (é um padrão de desenvolvimento com a finalidade de manter o baixo nível de acoplamento entre módulos de um sistema)
+-Java EE muito complicado -> Surgiu o Spring como alternativa
+-Beans: Objeto criado, mantido e gerenciado pelo container (relacionado a IoC, inversão de controle)
+-Scopes(5 tipos): 
+	Singleton(Único objeto compartilhado com toda a aplicação), 
+	Prototype (será criado um novo objeto quando solicitado ao container),
+	HTTP Request (Um bean será criado para cada requisição HTTP, o bean é destruído ao fim da aplicação),
+	HTTP Session (Um bean será criado para a sessão do usuário),
+	HTTP Global (Um bean de nível global para toda a aplicação)
+-AutoWired (byName, byType, byConstructor) - Realiza a injeção de dependência
+	Onde ocorrerá uma injeção automática de dependência
+
+#Spring Framework - Spring Boot
+
+-SpringBoot foca na configuração automática, padrões de estruturação de projeto
+-Antes do S. Boot -> Declaração individual de depêndencias, verbosidade, imcompatibilidade de versões, complexidade de gestão, configurações complexas e repetidas
+-Permite através do input do case de negócio dar as configurações iniciais automáticamente
+-Starters (São descritores de depêndencias, sintetiza muito a declaração e permite o FOCO NO NEGÓCIO)
+	Exemplos: Spring-boot-starter-* (data-jpa, data-mongodb, web, webservices, batch, test, openfeign, actuator)
+Spring initializr
+No spring não se faz mais 'new' para instanciar um objeto
+@Component
+implements CommandLineRunner
+
+@Bean vs @Component
+Implementa IoC e DI
+-Usa-se o @Beans quando não se tem acesso ao código fonte.
+-Usa-se o @Component quando é uma classe que pode ser provida via injeção de dependências(sem o 'new')
+
+Scope (quantos irei precisar?)
+Singleton vs Prototype
+
+Properties (arquivo application.properties (A.P.)) - Irá conter informações necessárias à aplicação mas que estarão isoladas no arquivo application.properties
+@Value("${nome}")
+@Value("${name:NoReply-DIO}") - caso a propiedade não seja encontrada no arquivo application.properties o Spring insere o valor default na aplicação.
+
+@ConfigurationProperties(_prefixo das propiedades no arquivo A.P._)
+
+#Spring Framework - Spring Data JPA
+
+Adiciona uma camada sobre o JPA
+-A interação com o banco de dados irá se dar através de herança de interfaces.
+-CrudRepository, JpaRepository, PagingAndSortingRepository.
+-Anotações: @Query, @Param
+
+a interface JpaRepository já contém os métodos para realizar operações básicas, basta criar uma nova classe repository para cada classe'Model' e extend JpaRepository.
+
+Realizando uma conexão com o bd postgres:
+-Inserir dependência no pom.xml ou gradle.build
+-Inserir informações no application.properties:
+
+#Opcional
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+#Obrigatório conforme o seu banco de dados
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.diverClassName=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/_nomeDaDatabase_
+spring.datasource.username=_usuario_
+spring.datasource.password=_senha_
+
+Repository Pattern (DAO)
+AOP Aspect Oriented Programming
+Principais métodos interface JpaRepository:
+-save
+-findById
+-existsById
+-findAll
+-delete
+-count
+
+Consultas Custommizadas (Query Methods e Query Override)
+
+Query Method: Interpreta a assinatura de um método para montar a JPQL correspondente.
+Ex: 
+public interface UserRepository extends Repository<User, Long> {
+	List<User> findByEmailAddressAndLastname(String emailAddress, String lastname);
+	}
+}
+Look for support keywordks to form valid methods
+Ex keywords: findBy,Distinct,And,Or,Is,Equals,Between,LessThan,LessThanEqual,GreaterThan,GreaterThanEqual,Containing
+
+Query Override: Usado em situações específicas onde os QueryMethods não trazem uma solução adequada, daí se customiza através de uma query.
+Ex:
+@Query("SELECT u FROM User u WHERE u.name LIKE %:name%")
+List<User> filtrarPorNome(@Param("name") String name);
+
+Equivalente em QueryMethod:
+List<User> findByNameContaining(String name);
