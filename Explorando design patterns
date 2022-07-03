@@ -1,0 +1,15 @@
+EXPLORANDO DESIGN PATTERNS
+
+#SINGLETON
+
+Permitir a criação de uma única instância de uma classe e fornecer um modo para recuperá-la.
+
+#STRATEGY
+
+Através de uma interface são estipulados métodos que permitam o contexto da aplicação agir conforme alguma "strategy"
+Ex: Rôbo se movimento de acordo com uma estratégia (mover agressivamente ou mover lentamente, etc...)
+
+#FACADE
+
+Provê uma interface que reduza a complexidade nas integrações com subsistemas.
+Ex: Uma classe que resgata um objeto cliente que possui diversos atributos através apenas do nome. Na prática é uma camada extra que reduz a complexidade.
