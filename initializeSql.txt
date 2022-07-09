@@ -1,0 +1,1 @@
+Instruções para inicializar o mySql server no ubuntu.1. sudo service mysql start2. sudo mysql -u root -p (insira password)obs: talvez seja necessário estar na pasta /etc/init.d----comando para mostrar em qual porta o mysql está conectado:SHOW GLOBAL VARIABLES LIKE 'PORT';

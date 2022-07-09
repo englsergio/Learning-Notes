@@ -26,3 +26,11 @@ git pull <apelidoRepositorioGitHub> <nomeBranch> ⇾ Recebe o repositório GitHu
 git pull <apelidoRepositorioGitHub> <nomeBranch> --allow-unrelated-histories ⇾ Recebe o repositório GitHub no branch selecionado *mesmo que tenham históricos diferentes*;
 git clone <linkRepositorio> ⇾ Clona um repositório do link especificado na pasta selecionada no terminal;
 git remote -v ⇾ Mostra o apelido dos repositório remotos;
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+{ git rm file1.txt
+git commit -m "remove file1.txt" } ⇾ Remove the file from the Git Repository and filesystem.
+
+{ git rm --cached file1.txt
+git commit -m "remove file1.txt" } ⇾ Remove the file ONLY from the Git Repository.
